@@ -19,21 +19,21 @@ for values in results_gender:
 		females.append(values)
 
 for classes in results_classes:
-	if values == eightJ:
+	if classes == "8J":
 		eightJ.append(classes)
-	elif values == eightE:
+	elif classes == "8E":
 		eightE.append(classes)
-	elif values == eightR:
+	elif classes == "8R":
 		eightR.append(classes)
-	elif values == eightU:
+	elif classes == "8U":
 		eightU.append(classes)
-	elif values == eightD:
+	elif classes == "8D":
 		eightD.append(classes)
-	elif values == eightO:
+	elif classes == "8O":
 		eightO.append(classes)
-	elif values == eightN:
+	elif classes == "8N":
 		eightN.append(classes)
 		
-print(len(females)); print(len(males)); len(print(eightJ)); print(len(eightE)); print(len(eightR));
+print(len(females)); print(len(males)); print(len(eightJ)); print(len(eightE)); print(len(eightR));
 print(len(eightU)); print(len(eightD)); print(len(eightO)); print(len(eightN));
 
