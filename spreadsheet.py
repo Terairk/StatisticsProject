@@ -104,7 +104,7 @@ for classes in results_classes:
 	elif classes == "8N":
 		eightN.append(classes)
 
-'''for types in results_types:
+for types in results_types:
 	if types == "ISTJ":
 		istj.append(types)
 	elif types == "ISFJ":
@@ -137,33 +137,17 @@ for classes in results_classes:
 		enfp.append(types)
 	elif types == "ENTP":
 		entp.append(types)
-'''
 
-
-
-people = []
-counter = 1
-
-count = 0
-for i in range (1, len(results_types)-1):
-	if (results_gender[i] != ""):
-		people.append(results_gender[i] + " : " + results_classes[i] + " : " + results_types[i])
-		counter += 1
-		
-print("Males: 26")
-print("Females: 20")
-
-for i in range(0,len(people)-1):
-	test = str(people[i])
-	if "8J" in test:
-		
-print("FeMale Judging: " + str(20-count)) # Not open minded
 
 for x in range (1, len(results_types)):
 	if (results_gender[x] == "Female"):
 		femaleTypes.append(results_types[x])
 	elif results_gender[x] == "Male":
 		malesTypes.append(results_types[x])
+		
+total = len(femaleTypes) + len(malesTypes)
+totalFemale = len(femaleTypes)
+totalMale = len(malesTypes)
 
 for types in malesTypes:
 	if types == "ISTJ":
@@ -234,11 +218,12 @@ for types in femaleTypes:
 	elif types == "ENTP":
 		Fentp.append(types)
 
-'''
+label = ("ISTJ", "ISFJ", "INFJ", "INTJ", "ISTP", "ISFP", "INFP", "INTP",
+         "ESTJ", "ESFJ", "ENFJ", "ENTJ", "ESTP", "ESFP", "ENFP", "ENTP")
 
 # Bar Chart Females and Males
 
- ind = np.arange(16)
+ind = np.arange(16)
 
 
 men_amount = (len(Mistj), len(Misfj), len(Minfj), len(Mintj), len(Mistp), len(Misfp), len(Minfp), len(Mintp),
@@ -246,34 +231,32 @@ men_amount = (len(Mistj), len(Misfj), len(Minfj), len(Mintj), len(Mistp), len(Mi
 female_amount = (len(Fistj), len(Fisfj), len(Finfj), len(Fintj), len(Fistp), len(Fisfp), len(Finfp), len(Fintp),
              len(Festj), len(Fesfj), len(Fenfj), len(Fentj), len(Festp), len(Fesfp), len(Fenfp), len(Fentp))
 
-# width = 0.36
-# plt.bar(ind - width / 2, men_amount, width, color='b', label="Male")
-# plt.bar(ind + width / 2, female_amount, width, color='r', label="Female")
+width = 0.36
+plt.bar(ind - width / 2, men_amount, width, color='steelblue', label="Male")
+plt.bar(ind + width / 2, female_amount, width, color='r', label="Female")
 
- plt.ylabel ('Frequency')
- plt.title('Frequency of different Myers Briggs types by type and gender')
- plt.xticks(ind,("ISTJ", "ISFJ", "INFJ", "INTJ", "ISTP", "ISFP", "INFP", "INTP",
+plt.ylabel ('Frequency')
+plt.title('Frequency of different Myers Briggs types by type and gender')
+plt.xticks(ind,("ISTJ", "ISFJ", "INFJ", "INTJ", "ISTP", "ISFP", "INFP", "INTP",
            "ESTJ", "ESFJ", "ENFJ", "ENTJ", "ESTP", "ESFP", "ENFP", "ENTP"), rotation="vertical" )
- plt.legend()
+plt.legend()
 
-'''
+
 
 # Pie Chart Stuff
-'''
-labels = ("ISTJ", "ISFJ", "INFJ", "INTJ", "ISTP", "ISFP", "INFP", "INTP",
-         "ESTJ", "ESFJ", "ENFJ", "ENTJ", "ESTP", "ESFP", "ENFP", "ENTP")
-Together = (len(istj)/46, len(isfj)/46, len(infj)/46, len(intj)/46, len(istp)/46, len(isfp)/46, len(infp)/46, len(intp)/46,
-            len(estj)/46, len(esfj)/46, len(enfj)/46, len(entj)/46, len(estp)/46, len(esfp)/46, len(enfp)/46, len(entp)/46)
 
-plt.pie(Together, labels=labels, autopct = "%1.1f%%", startangle = 90)
+
+Together = (len(istj)/total, len(isfj)/total, len(infj)/total, len(intj)/total, len(istp)/total, len(isfp)/total, len(infp)/total, len(intp)/total,
+            len(estj)/total, len(esfj)/total, len(enfj)/total, len(entj)/total, len(estp)/total, len(esfp)/total, len(enfp)/total, len(entp)/total)
+
+plt.pie(Together, labels=label, autopct = "%1.1f%%", startangle = 0)
 plt.axis('equal')
-'''
+
 
 # Bar Chart All Genders
 
 
-label = ("ISTJ", "ISFJ", "INFJ", "INTJ", "ISTP", "ISFP", "INFP", "INTP",
-         "ESTJ", "ESFJ", "ENFJ", "ENTJ", "ESTP", "ESFP", "ENFP", "ENTP")
+
 ind = np.arange(len(label))
 together = (len(istj), len(isfj), len(infj), len(intj), len(istp), len(isfp), len(infp), len(intp),
             len(estj), len(esfj), len(enfj), len(entj), len(estp), len(esfp), len(enfp), len(entp))
@@ -286,5 +269,23 @@ plt.xlabel("Myers Briggs Type")
 plt.ylabel("Frequency")
 plt.xticks(ind, label, rotation="vertical")
 plt.title("Frequency of different Myers Briggs types by type ")
+
+
+# Pie Chart Boys.
+
+Together = (len(Mistj)/totalMale, len(Misfj)/totalMale, len(Minfj)/totalMale, len(Mintj)/totalMale, len(Mistp)/totalMale, len(Misfp)/totalMale, len(Minfp)/totalMale, len(Mintp)/totalMale,
+            len(Mestj)/totalMale, len(Mesfj)/totalMale, len(Menfj)/totalMale, len(Mentj)/totalMale, len(Mestp)/totalMale, len(Mesfp)/totalMale, len(enfp)/totalMale, len(Mentp)/totalMale)
+plt.pie(Together, labels=label, autopct = "%1.1f%%", startangle = 0 )
+plt.axis('equal')
+
+# Pie Chart Girls.
+
+Together = (len(Fistj)/totalFemale, len(Fisfj)/totalFemale, len(Finfj)/totalFemale, len(Fintj)/totalFemale, len(Fistp)/totalFemale, len(Fisfp)/totalFemale, len(Finfp)/totalFemale, len(Fintp)/totalFemale,
+            len(Festj)/totalFemale, len(Fesfj)/totalFemale, len(Fenfj)/totalFemale, len(Fentj)/totalFemale, len(Festp)/totalFemale, len(Fesfp)/totalFemale, len(Fenfp)/totalFemale, len(Fentp)/totalFemale)
+plt.pie(Together, labels=label, autopct = "%1.1f%%", startangle = 0 )
+plt.axis('equal')
+
+
+
 
 plt.show()
